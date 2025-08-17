@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: lms-project
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn lms.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
