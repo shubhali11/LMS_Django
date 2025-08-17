@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white p-8 rounded-xl shadow-md text-center">
+    <h2 class="text-2xl font-bold mb-4">Are you sure?</h2>
+    <p class="mb-6">You are about to permanently delete the course: <strong>"{{ object.title }}"</strong></p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="flex justify-center space-x-4">
+            <a href="{% url 'course_detail' object.pk %}" class="bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg hover:bg-gray-400">Cancel</a>
+            <button type="submit" class="bg-red-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-red-700">Yes, Delete</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
